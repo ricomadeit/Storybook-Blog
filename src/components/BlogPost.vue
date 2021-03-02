@@ -13,7 +13,7 @@
     props: {
       post: {
         type: Object,
-        default: () => ({ id: '', title: '', content: ''}),
+        default: () => ({ id: '', title: '', content: '', state: ''}),
       },
     },
   };
