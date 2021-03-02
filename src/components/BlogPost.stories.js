@@ -20,6 +20,6 @@ Default.args = {
   post: {
     id: '1',
     title: 'First Post!!!',
-    content: 'This is my first ever blog post!',
+    content: 'Here is my blog post!',
   },
 };

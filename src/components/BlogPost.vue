@@ -2,10 +2,8 @@
 
 <template>
   <div class="post-item">
-    <h2 v-text="post.title"></h2>
+    <h4 v-text="post.title"></h4>
     <p v-text="post.content"></p>
-    <!-- <input type="text" readonly :value="post.title" />
-    <input type="text" readonly :value="post.content" /> -->
   </div>
 </template>
 
@@ -20,3 +18,13 @@
     },
   };
 </script>
+
+<style>
+    .post-item {
+        background-color: lightblue;
+        outline-style: solid;
+        outline-color: black;
+        padding: 10px;
+        margin: 5px;
+    }
+</style>
