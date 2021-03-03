@@ -4,7 +4,7 @@
   <div class="post-item" :class="post.state">
     <h4 v-text="post.title"></h4>
     <p v-text="post.content"></p>
-    <span v-if="currentState==LIKED" class="closedCircle" @click="$emit('liked-post', post.id)"></span>
+    <span v-if="currentState === 'LIKED'" class="closedCircle" @click="$emit('liked-post', post.id)"></span>
     <span v-else class="openCircle" ></span>
   </div>
 </template>
@@ -21,9 +21,8 @@
     computed: {
         currentState() {
             return this.post.state
-        }
+        },
     }
-
   };
 </script>
 
