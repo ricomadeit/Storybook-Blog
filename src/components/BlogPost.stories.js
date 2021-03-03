@@ -1,6 +1,7 @@
 // src/components/BlogPost.stories.js
 
 import BlogPost from './BlogPost';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'BlogPost',
@@ -9,10 +10,15 @@ export default {
   excludeStories: /.*Data$/,
 };
 
+export const actionsData = {
+    onLikedPost: action('liked-post'),
+  };
+
 const Template = (args, { argTypes }) => ({
   components: { BlogPost },
   props: Object.keys(argTypes),
-  template: '<BlogPost v-bind="$props" />',
+  methods: actionsData,
+  template: '<BlogPost v-bind="$props" @liked-post="onLikedPost"/>'
 });
 
 export const Default = Template.bind({});
@@ -20,6 +26,15 @@ Default.args = {
   post: {
     id: '1',
     title: 'First Post!!!',
-    content: 'This is my first ever blog post!',
+    content: 'Here is my blog post!',
+    state: 'NONE'
   },
 };
+
+export const Liked = Template.bind({});
+Liked.args = {
+    post: {
+        ...Default.args.post,
+        state: 'LIKED',
+    }
+}
