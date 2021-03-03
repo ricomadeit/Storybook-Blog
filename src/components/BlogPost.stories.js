@@ -11,14 +11,14 @@ export default {
 };
 
 export const actionsData = {
-    onLikedPost: action('like-post'),
+    onLikedPost: action('liked-post'),
   };
 
 const Template = (args, { argTypes }) => ({
   components: { BlogPost },
   props: Object.keys(argTypes),
   methods: actionsData,
-  template: '<BlogPost v-bind="$props" @liked-post="onLikedPost/>',
+  template: '<BlogPost v-bind="$props" @liked-post="onLikedPost"/>'
 });
 
 export const Default = Template.bind({});
@@ -27,14 +27,14 @@ Default.args = {
     id: '1',
     title: 'First Post!!!',
     content: 'Here is my blog post!',
-    state: "NONE"
+    state: 'NONE'
   },
 };
 
 export const Liked = Template.bind({});
-Pinned.args = {
+Liked.args = {
     post: {
         ...Default.args.post,
-        state: "LIKED"
+        state: 'LIKED',
     }
 }
