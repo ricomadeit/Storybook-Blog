@@ -1,9 +1,8 @@
 import NewPost from './BlogCreation';
-
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Post',
+  title: 'PostCreation',
   component: NewPost,
   excludeStories: /.*Data$/,
 };
@@ -16,7 +15,7 @@ const Template = (args, { argTypes }) => ({
   components: { NewPost },
   props: Object.keys(argTypes),
   methods: actionsData,
-  template: '<NewPost v-bind="$props @upload-post="uploadPost"" />',
+  template: '<NewPost v-bind="$props" @upload-post="uploadPost" />',
 });
 
 export const Default = Template.bind({});

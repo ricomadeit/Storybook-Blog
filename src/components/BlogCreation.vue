@@ -2,9 +2,9 @@
     <div class="postArea">
         <h1> Enter a post! </h1>
         <div>
-            <input class="titleStyle" type="text" placeholder="Enter a title!" v-model="NewPost.title" />
-            <textarea class="textStyle"  placeholder="Enter some details!" v-model="NewPost.info" rows="5" />
-            <input class="buttonStyle" type="button" value="Submit!" @click="$emit('upload-post', NewPost.id)"/>
+            <input class="titleStyle" type="text" placeholder="Title here!" v-model="NewPost.title" />
+            <textarea class="textStyle"  placeholder="Enter something about your day!" v-model="NewPost.info" rows="5" />
+            <input class="buttonStyle" type="button" value="Submit!" @click="$emit('upload-post', NewPost)"/>
         </div>
     </div>
 </template>
@@ -36,6 +36,7 @@
 
 .titleStyle {
     padding: 10px;
+    width: 30%;
     margin: 5px;
     display: block;
 }
