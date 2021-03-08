@@ -17,9 +17,9 @@ const Template = (args, { argTypes }) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  task: {
+  NewPost: {
     id: '1',
-    title: 'post 1',
-    info: 'This is some data',
+    title: NewPost.title,
+    info: NewPost.info,
   },
 };
