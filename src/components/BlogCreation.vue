@@ -4,7 +4,7 @@
         <div>
             <input class="titleStyle" type="text" placeholder="Enter a title!" v-model="NewPost.title" />
             <textarea class="textStyle"  placeholder="Enter some details!" v-model="NewPost.info" rows="5" />
-            <input class="buttonStyle" type="button" value="Submit!" />
+            <input class="buttonStyle" type="button" value="Submit!" @click="$emit('upload-post', NewPost.id)"/>
         </div>
     </div>
 </template>
