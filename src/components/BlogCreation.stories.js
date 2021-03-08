@@ -24,5 +24,6 @@ Default.args = {
     id: '1',
     title: NewPost.title,
     info: NewPost.info,
+    complete: NewPost.complete,
   },
 };

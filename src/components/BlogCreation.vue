@@ -1,10 +1,11 @@
 <template>
     <div class="postArea">
         <h1> Enter a post! </h1>
+        <!-- <p style="color: blue;"> Please make sure all the fields have been filled! </p> -->
         <div>
             <input class="titleStyle" type="text" placeholder="Title here!" v-model="NewPost.title" />
             <textarea class="textStyle"  placeholder="Enter something about your day!" v-model="NewPost.info" rows="5" />
-            <input class="buttonStyle" type="button" value="Submit!" @click="$emit('upload-post', NewPost)"/>
+            <input class="buttonStyle" type="button" value="Submit!" @click="$emit('upload-post', NewPost); checkForm;"/>
         </div>
     </div>
 </template>
@@ -16,10 +17,17 @@
             NewPost: {
                 type: Object,
                 required: true,
-                default: () => ({ id: '', title: '', info: '', date: ''}),
-                validator: NewPost => ['id', 'title', 'info', 'date'].every(key => key in NewPost),
+                default: () => ({ id: null, title: null, info: null, complete: false}),
             },
         },
+        computed: {
+            checkForm() {
+                if (this.NewPost.title && this.NewPost.info) {
+                    return this.NewPost.complete = true
+                }
+                return this.NewPost.complete = false
+            }
+        }
     }
 </script>
 
