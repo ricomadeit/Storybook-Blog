@@ -1,7 +1,7 @@
 <!-- src/components/BlogPost.vue -->
 
 <template>
-  <div class="post-item"> 
+  <div v-if="isActive" class="post-item"> 
     <h4 v-text="post.title"></h4>
     <p v-text="post.content"></p>
     <span :class="['openCircle', {'openCircle--liked': post.liked}]" @click="likePost"></span>
@@ -15,17 +15,21 @@
     props: {
       post: {
         type: Object,
-        default: () => ({ id: '', title: '', content: '', liked: Boolean, state: ''}),
+        default: () => ({ id: '', title: '', content: '', liked: Boolean, active: Boolean}),
       },
     },
     methods: {
-        likePost() {
-          this.$emit('like-post', this.post.id)
-          this.post.liked = !this.post.liked
-        },
-        deletePost() {
-          this.$emit('delete-post', this.post)
-        }
+      isActive() {
+        return this.post.active
+      },
+      likePost() {
+        this.$emit('like-post', this.post.id)
+        this.post.liked = !this.post.liked
+      },
+      deletePost() {
+        this.$emit('delete-post', this.post)
+        this.post.active = false
+      }
     }
   };
 </script>

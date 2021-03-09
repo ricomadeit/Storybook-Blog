@@ -29,23 +29,23 @@ Default.args = {
     title: 'First Post!!!',
     content: 'Here is my blog post!',
     liked: false,
-    state: 'ACTIVE',
+    active: true,
   },
 };
 
-// export const Liked = Template.bind({});
-// Liked.args = {
-//     post: {
-//         ...Default.args.post,
-//         liked: true,
-//     }
-// }
+export const Liked = Template.bind({});
+Liked.args = {
+    post: {
+        ...Default.args.post,
+        liked: true,
+    }
+}
 
 export const Deleted = Template.bind({});
 Deleted.args = {
     post: {
         ...Default.args.post,
         liked: false,
-        state: 'DELETED',
+        active: false,
     }
 }
