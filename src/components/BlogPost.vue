@@ -1,11 +1,11 @@
 <!-- src/components/BlogPost.vue -->
 
 <template>
-  <div class="post-item" :class="post.state">
+  <div class="post-item"> 
     <h4 v-text="post.title"></h4>
     <p v-text="post.content"></p>
-    <span v-if="currentState === 'LIKED'" class="closedCircle" @click="$emit('liked-post', post.id)"></span>
-    <span v-else class="openCircle" ></span>
+    <span :class="['openCircle', {'openCircle--liked': post.liked}]" @click="likePost"></span>
+    <input type="button" value="DELETE" @click="deletePost"/> 
   </div>
 </template>
 
@@ -15,13 +15,21 @@
     props: {
       post: {
         type: Object,
-        default: () => ({ id: '', title: '', content: '', state: ''}),
+        default: () => ({ id: '', title: '', content: '', liked: Boolean, active: Boolean}),
       },
     },
-    computed: {
-        currentState() {
-            return this.post.state
-        },
+    methods: {
+      isActive() {
+        return this.post.active
+      },
+      likePost() {
+        this.$emit('like-post', this.post.id)
+        this.post.liked = !this.post.liked
+      },
+      deletePost() {
+        this.$emit('delete-post', this.post)
+        this.post.active = false
+      }
     }
   };
 </script>
@@ -37,15 +45,13 @@
     .openCircle {
         height: 25px;
         width: 25px;
+        margin: 15px;
         background-color: white;
         border-radius: 50%;
-        display: inline-block;
+        display: block;
     }
-    .closedCircle {
-        height: 25px;
-        width: 25px;
-        background-color: lightcoral;
-        border-radius: 50%;
-        display: inline-block;
+    .openCircle--liked {
+      background-color: rgb(233, 123, 123)
     }
+    
 </style>
