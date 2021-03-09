@@ -2,14 +2,8 @@
 
 <template>
   <div class="blog-items">
-    <template v-if="loading">
-      loading
-    </template>
-    <template v-else-if="isEmpty">
-      empty
-    </template>
-    <template v-else>
-      <BlogPost v-for="post in posts" :key="post.id" :post="post"/>
+    <template>
+      <BlogPost v-for="post in activePosts" :key="post.id" :post="post" />
     </template>
   </div>
 </template>
@@ -20,13 +14,14 @@
     name: 'BlogFeed',
     components: { BlogPost },
     props: {
-      posts: { type: Array, required: true, default: () => [] },
-      loading: { type: Boolean, default: false },
+      posts: { 
+        type: Array, 
+        default: () => [] },
     },
     computed: {
-      isEmpty() {
-        return this.posts.length === 0;
-      },
+      activePosts() { 
+        return this.posts.filter((post) => post.active) 
+      }
     },
   };
 </script>

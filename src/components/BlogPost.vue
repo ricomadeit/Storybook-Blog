@@ -1,7 +1,7 @@
 <!-- src/components/BlogPost.vue -->
 
 <template>
-  <div v-if="isActive" class="post-item"> 
+  <div class="post-item"> 
     <h4 v-text="post.title"></h4>
     <p v-text="post.content"></p>
     <span :class="['openCircle', {'openCircle--liked': post.liked}]" @click="likePost"></span>
