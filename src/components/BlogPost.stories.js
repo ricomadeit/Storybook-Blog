@@ -40,12 +40,3 @@ Liked.args = {
         liked: true,
     }
 }
-
-export const Deleted = Template.bind({});
-Deleted.args = {
-    post: {
-        ...Default.args.post,
-        liked: false,
-        active: false,
-    }
-}
