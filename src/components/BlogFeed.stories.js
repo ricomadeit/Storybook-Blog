@@ -12,7 +12,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   components: { BlogFeed },
   props: Object.keys(argTypes),
-  template: '<BlogFeed v-bind="$props" />',
+  template: '<BlogFeed v-bind="$props @" />',
 });
 
 export const Default = Template.bind({});
