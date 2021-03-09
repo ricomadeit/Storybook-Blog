@@ -11,7 +11,7 @@ export default {
 };
 
 export const actionsData = {
-    likePost: action('liked-post'),
+    likePost: action('like-post'),
     deletePost: action('delete-post'),
   };
 
@@ -19,7 +19,7 @@ const Template = (args, { argTypes }) => ({
   components: { BlogPost },
   props: Object.keys(argTypes),
   methods: actionsData,
-  template: '<BlogPost v-bind="$props" @liked-post="likePost" @delete-post="deletePost" />'
+  template: '<BlogPost v-bind="$props" @like-post="likePost" @delete-post="deletePost" />'
 });
 
 export const Default = Template.bind({});
