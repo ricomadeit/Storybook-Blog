@@ -4,7 +4,7 @@
   <div class="post-item"> 
     <h4 v-text="post.title"></h4>
     <p v-text="post.content"></p>
-    <span class="openCircle" :style="postUnliked" @click="likePost"></span>
+    <span :class="['openCircle', {'openCircle--liked': post.liked}]" @click="likePost"></span>
     <input type="button" value="DELETE" @click="deletePost"/> 
   </div>
 </template>
@@ -12,13 +12,6 @@
 <script>
   export default {
     name: 'BlogPost',
-    data() {
-      return {
-        postLiked: {
-          'background-color': 'rgb(233, 123, 123)',
-        },
-      }
-    },
     props: {
       post: {
         type: Object,
@@ -27,20 +20,10 @@
     },
     methods: {
         likePost() {
-          // change color of circle
           this.$emit('like-post', this.post.id)
           this.post.liked = !this.post.liked
-
-          if (this.post.liked) {
-            alert("liked")
-            this.postLiked['background-color'] = 'rgb(233, 123, 123)'
-          }
-          // else {
-          //   this.postLiked['background-color'] =  'rgb(233, 123, 123)'
-          // }
         },
         deletePost() {
-          // hide current post
           this.$emit('delete-post', this.post)
         }
     }
@@ -63,4 +46,8 @@
         border-radius: 50%;
         display: block;
     }
+    .openCircle--liked {
+      background-color: rgb(233, 123, 123)
+    }
+    
 </style>
