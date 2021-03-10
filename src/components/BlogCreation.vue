@@ -16,7 +16,7 @@
             NewPost: {
                 type: Object,
                 required: true,
-                default: () => ({ id: null, title: null, info: null, complete: false}),
+                default: () => ({ id: null, title: null, info: null, complete: false, active: true}),
             },
         },
         methods: {
