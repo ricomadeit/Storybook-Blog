@@ -5,7 +5,7 @@
     <template>
       <BlogPost v-for="post in activePosts" :key="post.id" :post="post" />
       <p></p>
-      <CreationPost @upload-post="addPost" />
+      <CreationPost @upload-post="addPost"/>
     </template>
   </div>
 </template>
@@ -30,17 +30,18 @@
     },
     computed: {
       activePosts() { 
-        return this.posts.filter((post) => post.active) 
+        console.log(this.allPosts)
+        return this.allPosts.filter((post) => post.active)
       },
       allPosts() {
-        return this.allPosts.filter((post) => post.active)
-      }
+        return this.posts.concat(this.newPosts)
+      },
     },
     methods: {
       addPost (newPost) {
-        newPost.id = this.posts.length
-        this.posts.push(newPost)
-        console.log(this.posts)
+        newPost.active = true
+        newPost.liked = false
+        this.newPosts.push(newPost)
       },
     },
   };
