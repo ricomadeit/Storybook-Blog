@@ -3,7 +3,7 @@
         <h1> Enter a post! </h1>
         <div>
             <input class="titleStyle" type="text" placeholder="Title here!" v-model="NewPost.title" />
-            <textarea class="textStyle"  placeholder="Enter something about your day!" v-model="NewPost.info" rows="5" />
+            <textarea class="textStyle"  placeholder="Enter something about your day!" v-model="NewPost.content" rows="5" />
             <input class="buttonStyle" type="button" value="Submit!" @click="submit"/>
         </div>
     </div>
@@ -15,13 +15,12 @@
         props: {
             NewPost: {
                 type: Object,
-                required: true,
-                default: () => ({ id: null, title: null, info: null, complete: false, active: true}),
+                default: () => ({ id: null, title: null, content: null, complete: false, active: true}),
             },
         },
         methods: {
             checkForm() {
-                if (this.NewPost.title && this.NewPost.info) {
+                if (this.NewPost.title && this.NewPost.content) {
                     return this.NewPost.complete = true
                 }
                 return this.NewPost.complete = false
