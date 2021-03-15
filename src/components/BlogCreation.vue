@@ -27,7 +27,8 @@
             },
             submit() {
                 if(this.checkForm()) {
-                    this.$emit('upload-post', this.NewPost)
+                    // ... is the same as object.assign({}, )
+                    this.$emit('upload-post', {...this.NewPost})
                 }
                 else {
                     alert("Please fill out all textboxes.")
