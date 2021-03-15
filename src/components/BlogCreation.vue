@@ -15,7 +15,7 @@
         props: {
             NewPost: {
                 type: Object,
-                default: () => ({ id: null, title: null, content: null, complete: false, active: true}),
+                default: () => ({ id: null, title: null, content: null, liked: Boolean, complete: false, active: true}),
             },
         },
         methods: {
