@@ -23,7 +23,7 @@ Default.args = {
   NewPost: {
     id: '1',
     title: NewPost.title,
-    info: NewPost.info,
+    content: NewPost.content,
     complete: NewPost.complete,
   },
 };

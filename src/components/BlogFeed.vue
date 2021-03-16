@@ -4,24 +4,45 @@
   <div class="blog-items">
     <template>
       <BlogPost v-for="post in activePosts" :key="post.id" :post="post" />
+      <p></p>
+      <CreationPost @upload-post="addPost"/>
     </template>
   </div>
 </template>
 
 <script>
   import BlogPost from './BlogPost';
+  import CreationPost from './BlogCreation';
+
   export default {
     name: 'BlogFeed',
-    components: { BlogPost },
+    components: { BlogPost, CreationPost },
+    data: function () {
+      return {
+        newPosts: []
+      }
+    },
     props: {
       posts: { 
         type: Array, 
-        default: () => [] },
+        default: () => [] 
+        },
     },
     computed: {
       activePosts() { 
-        return this.posts.filter((post) => post.active) 
-      }
+        console.log(this.allPosts)
+        return this.allPosts.filter((post) => post.active)
+      },
+      allPosts() {
+        return this.posts.concat(this.newPosts)
+      },
+    },
+    methods: {
+      addPost (newPost) {
+        newPost.active = true
+        newPost.liked = false
+        this.newPosts.push(newPost)
+      },
     },
   };
 </script>

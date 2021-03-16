@@ -15,7 +15,7 @@
     props: {
       post: {
         type: Object,
-        default: () => ({ id: '', title: '', content: '', liked: Boolean, active: Boolean}),
+        default: () => ({ id: '', title: '', content: '', liked: false, active: true}),
       },
     },
     methods: {
